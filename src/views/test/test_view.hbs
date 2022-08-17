@@ -1,0 +1,26 @@
+
+{{#extend "test_layout"}}
+    {{#content "head" mode="append"}}
+        <link rel="stylesheet" href="/src/assets/css/style.css" />
+    {{/content}}
+
+    {{#content "header" mode="replace"}}
+        <p>wassup homie</p>
+        <p>wassup homie 12321</p>
+        {{> includes/header }}
+    {{/content}}
+
+    {{#content "body"}}
+        <h2>Welcome Home</h2>
+
+        <ul>
+            {{#items}}
+                <li>{{.}}</li>
+            {{/items}}
+        </ul>
+    {{/content}}
+
+    {{#content "foot"}}
+        <script src="assets/js/analytics.js"></script>
+    {{/content}}
+{{/extend}}
