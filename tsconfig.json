@@ -16,10 +16,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "assets": [
-      "**/*.hbs"
-    ],
-    "watchAssets": true
+    "noFallthroughCasesInSwitch": false
   }
 }

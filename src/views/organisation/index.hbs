@@ -1,0 +1,52 @@
+<!-- use it somewhere -->
+<!-- {{> includes/form }} -->
+
+{{#extend "main_layout"}}
+    {{#content "head" mode="append"}}
+        <link rel="stylesheet" href="/src/assets/css/style.css" />
+    {{/content}}
+
+    {{#content "body"}}
+        <h1 class="m-5 mb-4">Welcome To Organisations</h1>
+        <hr>
+
+        <div class="d-flex flex-column mx-auto" style="max-width: 700px;">
+          <div class="d-flex justify-content-end">
+            <a href="main/create">
+              <button type="button" class="btn btn-primary mb-3">Create Organisation</button>
+            </a>
+          </div>
+
+          <table class="table caption-top">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Evaluation</th>
+                <th scope="col">Employe Sum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    {{/content}}
+{{/extend}}
