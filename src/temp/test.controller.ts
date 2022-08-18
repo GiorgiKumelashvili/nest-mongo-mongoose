@@ -9,16 +9,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Error as MongooseError, Schema } from 'mongoose';
-import { fieldJoin } from 'src/common/helpers';
-import {
-  Car,
-  CarDocument,
-  carFiels,
-  User,
-  UserDocument,
-  userFields,
-} from './user.model';
+import { Model, Error as MongooseError } from 'mongoose';
+import { Car, CarDocument, User, UserDocument } from './user.model';
 
 class GenericException extends HttpException {
   constructor(statusCode: HttpStatus, message?: string, messageCode?: string) {
