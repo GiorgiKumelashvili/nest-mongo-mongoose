@@ -81,26 +81,75 @@ export class TestControler {
   }
 
   @Patch()
-  async updateUser() {
-    const userProps: Partial<User> = {
-      age: 18,
-      firstName: 'gio',
-    };
+  public async updateUser() {
+    try {
+      // doesnt return new user just update result
+      const updatedUser = await this.userModel.updateOne(
+        {
+          _id: '62fe18616a8aeb63cfd41340',
+        },
+        {
+          $set: {
+            age: 23,
+            firstName: 'adssa',
+          },
+        },
+      );
 
-    const updatedUser = await this.userModel.findOneAndUpdate(
-      { id: '62fdead261b249202e8acc20' },
-      userProps,
-      { new: true }, // returns updated user
-    );
+      if (updatedUser.matchedCount === 0) {
+        throw new GenericException(
+          HttpStatus.NOT_FOUND,
+          'Could not find specified item',
+          'ItemNotFound',
+        );
+      }
 
-    return {
-      message: 'updated user',
-      user: updatedUser,
-    };
+      return { message: 'updated user' };
+
+      // best way
+      // const userProps: Partial<User> = {
+      //   age: 18,
+      //   firstName: 'gio',
+      // };
+
+      // const updatedUser = await this.userModel.findOneAndUpdate(
+      //   { _id: '62fe18ebd8281bb360b398f0' },
+      //   userProps,
+      //   { new: true }, // returns updated user
+      // );
+
+      // if (!updatedUser) {
+      //   throw new GenericException(
+      //     HttpStatus.NOT_FOUND,
+      //     'Could not find specified item',
+      //     'ItemNotFound',
+      //   );
+      // }
+
+      // return {
+      //   message: 'updated user',
+      //   user: updatedUser,
+      // };
+    } catch (error) {
+      if (error instanceof MongooseError) {
+        throw new GenericException(
+          HttpStatus.BAD_REQUEST,
+          error.message,
+          MongooseError.name,
+        );
+      }
+
+      if (error instanceof GenericException) {
+        throw error;
+      }
+
+      // else something wrong
+      throw new InternalServerErrorException('something went wrong try again');
+    }
   }
 
   @Delete()
-  async deleteUser() {
+  public async deleteUser() {
     try {
       // deleting and returning item
       const deleteResult = await this.userModel.findOneAndDelete({
