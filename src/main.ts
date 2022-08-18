@@ -1,10 +1,11 @@
-import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
-import { AppModule } from './app.module';
 import * as path from 'path';
 import * as hbs from 'hbs';
 import * as hbsUtilsFunc from 'hbs-utils';
 import * as handlebarsLayouts from 'handlebars-layouts';
+
+import { NestFactory } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { AppModule } from './app.module';
 import { ServeStaticOptions } from '@nestjs/platform-express/interfaces/serve-static-options.interface';
 
 async function bootstrap() {
@@ -40,3 +41,13 @@ async function bootstrap() {
 }
 
 bootstrap();
+
+/**
+ * 
+In short:
+
+findOneAndDelete() returns the deleted document after having deleted it (in case you need its contents after the delete operation);
+deleteOne() is used to delete a single document
+remove() is a deprecated function and has been replaced by deleteOne() (to delete a single document) and deleteMany() (to delete multiple documents)
+
+ */

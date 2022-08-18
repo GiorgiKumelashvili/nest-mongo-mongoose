@@ -27,7 +27,7 @@ export class AppController {
     };
   }
 
-  @Get('test')
+  @Get('testing')
   @Render('test/test_view')
   testingLayout() {
     return {
@@ -36,7 +36,7 @@ export class AppController {
     };
   }
 
-  @Get('/testing')
+  @Get('testing2')
   getHello(): string {
     return this.appService.getHello();
   }
