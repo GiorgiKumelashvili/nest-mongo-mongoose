@@ -17,7 +17,7 @@ export class Car {
   color: string;
 }
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, collection: 'users' })
 export class User {
   @Prop({ type: SchemaTypes.ObjectId })
   id: Types.ObjectId;
